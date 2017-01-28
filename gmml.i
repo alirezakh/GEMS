@@ -36,6 +36,10 @@
 #include "gmml/includes/InputSet/CondensedSequenceSpace/condensedsequenceamberprepresidue.hpp"
 #include "gmml/includes/InputSet/CondensedSequenceSpace/condensedsequence.hpp"
 
+//#include "gmml/includes/InputSet/CifFileSpace/ciffileatom.hpp"
+//#include "gmml/includes/InputSet/CifFileSpace/ciffile.hpp"
+//#include "gmml/includes/InputSet/CifFileSpace/ciffileprocessingexception.hpp"
+
 #include "gmml/includes/InputSet/PdbFileSpace/pdbatom.hpp"
 #include "gmml/includes/InputSet/PdbFileSpace/pdbatomcard.hpp"
 #include "gmml/includes/InputSet/PdbFileSpace/pdbcompoundcard.hpp"
@@ -240,6 +244,10 @@ std::ostream & get_cout() { return std::cout; }
 %include "gmml/includes/InputSet/PdbqtFileSpace/pdbqtremarkcard.hpp"
 %include "gmml/includes/InputSet/PdbqtFileSpace/pdbqtrootcard.hpp"
 %include "gmml/includes/InputSet/PdbqtFileSpace/pdbqttorsionaldofcard.hpp"
+
+//%include "gmml/includes/InputSet/CifFileSpace/ciffileatom.hpp"
+//%include "gmml/includes/InputSet/CifFileSpace/ciffile.hpp"
+//%include "gmml/includes/InputSet/CifFileSpace/ciffileprocessingexception.hpp"
 
 %include "gmml/includes/Resolver/PdbPreprocessor/pdbpreprocessor.hpp"
 %include "gmml/includes/Resolver/PdbPreprocessor/pdbpreprocessorchaintermination.hpp"
@@ -564,6 +572,9 @@ std::ostream & get_cout() { return std::cout; }
 //typedef std::vector<PdbqtBranchCard*> BranchCardVector;
 %template(pdbqt_branch_card_vector) std::vector<PdbqtFileSpace::PdbqtBranchCard*>;
 
+///Cif File///
+//typedef std::vector<CifFileAtom*> CifFileAtomVector;
+//%template(cif_atom_vector) std::vector<CifFileSpace::CifFileAtom*>;
 
 ///Condensed Sequence///
 //typedef std::vector<CondensedSequenceResidue*> CondensedSequenceResidueVector;
@@ -573,10 +584,41 @@ std::ostream & get_cout() { return std::cout; }
 //%template(condensedsequence_token_type_vector) std::vector<gmml::CondensedSequenceTokenType>;
 
 //typedef std::vector<CondensedSequenceResidue*> CondensedSequenceResidueTree;
-//%template(condensedsequence_residue_tree) std::vector<CondensedSequenceSpace::CondensedSequenceResidue*>;
+%template(condensedsequence_residue_tree) std::vector<CondensedSequenceSpace::CondensedSequenceResidue*>;
 
 //typedef std::vector<CondensedSequenceAmberPrepResidue*> CondensedSequenceAmberPrepResidueTree;
-//%template(condensedsequence_amber_prep_residue_tree) std::vector<CondensedSequenceSpace::CondensedSequenceAmberPrepResidue*>;
+%template(condensedsequence_amber_prep_residue_tree) std::vector<CondensedSequenceSpace::CondensedSequenceAmberPrepResidue*>;
+
+//typedef std::pair<std::string, RotamersAndGlycosidicAnglesInfo*> RotamerNameInfoPair;
+%template(rotamer_name_info_pair) std::pair<std::string, CondensedSequenceSpace::RotamersAndGlycosidicAnglesInfo*>;
+
+//typedef std::vector<RotamerNameInfoPair> CondensedSequenceRatomersAndGlycosidicAnglesInfo;
+%template(rotamer_angle_info_vector) std::vector<std::pair<std::string, CondensedSequenceSpace::RotamersAndGlycosidicAnglesInfo*> >;
+
+//std::pair<std::string, double>
+%template(string_double_pair) std::pair<std::string, double>;
+
+//std::vector<std::pair<std::string, double> >
+%template(glycosidic_angle_name_value_pair_vector) std::vector<std::pair<std::string, double> >;
+
+//std::pair<std::string, std::vector<std::string> >
+%template(string_vector_string_pair) std::pair<std::string, std::vector<std::string> >;
+
+//std::vector<std::pair<std::string, std::vector<std::string> > >
+%template(string_vector_string_pair_vector) std::vector<std::pair<std::string, std::vector<std::string> > >;
+
+%template(vector_vector_int) std::vector<std::vector<int> >;
+
+//std::vector<std::vector<double> >
+%template(vector_vector_double) std::vector<std::vector<double> >;
+
+//typedef std::map<int, std::vector<std::vector<double> > > IndexLinkageConfigurationMap;
+%template() std::pair<int, std::vector<std::vector<double> > >;
+%template(int_vector_vector_double_map) std::map<int, std::vector<std::vector<double> > >;
+
+//typedef std::map<int, std::string> IndexNameMap;
+%template() std::pair<int, std::string>;
+%template(int_string_map) std::map<int, std::string>;
 
 //typedef std::map<int, std::string> DerivativeMap;
 //%template() std::pair<int, std::string >;
